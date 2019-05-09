@@ -1,5 +1,24 @@
 var express = require("express");
-var orm = require("./config/orm.js");
 
-orm.updateOne("burgers", "Happy Burger", true, 5);
-orm.selectAll("burgers");
+var PORT = process.env.PORT || 3000;
+
+var app = express();
+
+app.use(express.static("public"));
+
+//parse request body as json
+app.use(express.urlencoded({extended:true}));
+app.use(express.json());
+
+var exphbs = require("express-handlebars");
+
+app.engine("handlers", exphbs({defaultLayout:"main"}));
+app.set("view engine", "handlebars");
+
+var routes = require("./controllers/burger_controller.js");
+
+app.use(routes);
+
+app.listen(PORT, function(){
+    console.log(`Burger app is running on PORT ${PORT}`);
+});
