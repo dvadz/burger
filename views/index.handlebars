@@ -1,5 +1,23 @@
-<ul>
+<p>Available</p>
+<ul class="available">
     {{#each burgers}}
-    <li> <span> {{id}} {{burger_name}} {{devoured}} </span></li>
+        {{#unless devoured}}
+            <li>id={{id}}, name={{burger_name}}, devoured={{devoured}} 
+                <form action="/api/eat" method="post">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <input type="hidden" name="burger_name" value="{{burger_name}}">
+                    <input type="submit"></input>
+                </form> 
+            </li>
+        {{/unless}}
+    {{/each}}
+</ul>
+
+<p>Eaten</p>
+<ul class="eaten">
+    {{#each burgers}}
+        {{#if devoured}}
+            <li>id={{id}}, name={{burger_name}}, devoured={{devoured}}  </li>
+        {{/if}}
     {{/each}}
 </ul>
