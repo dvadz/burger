@@ -1,23 +1,37 @@
-<p>Available</p>
-<ul class="available">
-    {{#each burgers}}
-        {{#unless devoured}}
-            <li>id={{id}}, name={{burger_name}}, devoured={{devoured}} 
-                <form action="/api/eat" method="post">
-                    <input type="hidden" name="id" value="{{id}}">
-                    <input type="hidden" name="burger_name" value="{{burger_name}}">
-                    <input type="submit"></input>
-                </form> 
-            </li>
-        {{/unless}}
-    {{/each}}
-</ul>
+<div class="row">
+    
+    {{!-- TO BE EATEN --}}
+    <div id="left" class="col-md-4">
+        <h5 class="text-center">FoodBucket List</h5>
+        {{#each burgers}}
+            {{#unless devoured}}
+                <p>
+                    <span class="ml-4">{{id}} - {{burger_name}}</span>
+                    <button id="{{id}}" class="btn btn-sm btn-outline-primary">Eat</button>
+                </p>
+            {{/unless}}
+        {{/each}}
+    </div>
+    
+    {{!-- ADD --}}
+    <div id="add" class="col-md-4">
+        <form action="/api/new" method="POST">
+            <input type="text" name="burgerName" class="form-control" placeholder="name of food you want to eat">
+            <input type="submit" class="btn btn-outline-primary btn-block mt-4"></input>
+        </form>
+    </div>
 
-<p>Eaten</p>
-<ul class="eaten">
-    {{#each burgers}}
-        {{#if devoured}}
-            <li>id={{id}}, name={{burger_name}}, devoured={{devoured}}  </li>
-        {{/if}}
-    {{/each}}
-</ul>
+    {{!-- ALREADY EATEN --}}
+    <div id="right" class="col-md-4">
+        <h5 class="text-center">Eaten</h5>
+        {{#each burgers}}
+            {{#if devoured}}
+                <p>
+                    <span class="ml-4">{{id}} - {{burger_name}}</span>
+                </p>   
+            {{/if}}
+        {{/each}}
+    </div>
+</div>
+
+
