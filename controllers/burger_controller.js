@@ -25,7 +25,7 @@ router.post("/api/eat", function(req, res){
 
     // TODO: devour it
     burger.devour(req.body.burger_name, req.body.id, function(result){
-        res.redirect("/");
+        res.end();
     });
 });
 
