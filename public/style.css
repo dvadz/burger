@@ -1,0 +1,25 @@
+.body {
+    position: relative;
+}
+
+.jumbotron {
+    background: none;
+    border: 1px solid royalblue;
+}
+
+.container {
+    z-index: 99;
+}
+
+#bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    opacity: .4;
+}
+
+img {
+    width: 100%;
+    height: auto;
+}
