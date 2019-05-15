@@ -7,7 +7,7 @@
             {{#unless devoured}}
                 <p>
                     <span class="ml-4">{{id}} - {{burger_name}}</span>
-                    <button id="{{id}}" class="btn btn-sm btn-outline-primary">Eat</button>
+                    <button id="{{id}}" data-burgername="{{burger_name}}" class="eatfood btn btn-sm btn-outline-primary">Eat</button>
                 </p>
             {{/unless}}
         {{/each}}
